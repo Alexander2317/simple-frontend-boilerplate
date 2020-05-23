@@ -6,7 +6,7 @@ Settings for launch
 1. Install package manager [yarn](https://yarnpkg.com/).
 ```npm install -g yarn```
 2. Run the command in the console ```yarn install```
-3. Run the project [в браузере](http://localhost:3000)
+3. Run the project [in browser](http://localhost:3000)
 
 
 Main command
@@ -30,14 +30,14 @@ It's not necessary to reload the page because we use Hot Module Replacement (HMR
 Main libraries
  -----------------------------------
 
-- Twig,
-- postcss,
-- babel,
-- ES modules,
-- prettier,
-- eslint,
-- stylelint,
-- HMR,
+- Twig
+- postcss
+- babel
+- ES modules
+- prettier
+- eslint
+- stylelint
+- HMR
 - Webpack 4
 
 
