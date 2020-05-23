@@ -1,57 +1,64 @@
-# Простой фронтендд бойлепрплейт
+# Just simple boilerplate
 
-Настройка для запуска
+Settings for launch
 -----------------------------------
 
-1. Установить пакетный менеджер yarn.
+1. Install package manager [yarn](https://yarnpkg.com/).
 ```npm install -g yarn```
-2. Выполнить команду в консоли ```yarn install```
-3. Запустить проект [в браузере](http://localhost:3000)
+2. Run the command in the console ```yarn install```
+3. Run the project [в браузере](http://localhost:3000)
 
 
-Основные команды
+Main command
 -----------------------------------
 
-Данные команды вводим через консоль.
 ```
-lint-js - проверка правильности стиля кода
-lint-css - проверка правильности стиля файлов css
-lint - общая команда, которая объединяет lint-js и lint-css
-fix-js - форматирование js кода
-fix-css - форматирование css кода
-fix - общая команда, которая объединяет fix-js и fix-css
-start - команда для запуска сервера для разработки
-build - сборка проекта
+lint-js - check correct js code
+lint-css - check correct css code
+lint - base command wich combine lint-js and lint-css
+fix-js - formatting your js code
+fix-css - formatting your css code
+fix - base command wich combine fix-js and fix-css
+start - command to start development server
+build - build project
 ```
 
-При запуске ```yarn start``` будет запущен сервер для разработки.
-Не обязательно перезагружать страницу (HMR).
+For example ```yarn start``` - launch server
+It's not necessary to reload the page because we use Hot Module Replacement (HMR)
 
 
-Основные библиотеки
+Main libraries
  -----------------------------------
 
-Twig, postcss, babel, ES modules, prettier, eslint, stylelint, HMR, webpack
+- Twig,
+- postcss,
+- babel,
+- ES modules,
+- prettier,
+- eslint,
+- stylelint,
+- HMR,
+- Webpack 4
 
 
-Структура папок
+Structure folders
  -----------------------------------
 
-Для шаблонов используется [Twig](https://dev-gang.ru/doc/twig/) шаблонизатор
+For layout use [Twig](https://dev-gang.ru/doc/twig/) template engine
 
     src
-        /html - содержит шаблоны проекта
-            /components - основные компоненты проекта
-            /layout - общая верстка, внутрь которой вставляются шаблоны
-            /pages - страницы сайта
+        /html - templates
+            /components - main component project
+            /layout - base layout
+            /pages - pages site
 
-        /images - папка с изображениями проекта
+        /images - folder with images
 
-        /js - папка со скриптами
-         /app.js - основной файл, в который компилируется js код и стили
+        /js - folder with you scripts
+         /app.js - main file for build
 
-        /styles - папка со стилями
-            /components - основные стилевые компоненты страницы
-            /includes - папка с базовыми стилями и настройками
+        /styles - folder with styles
+            /components - main style components
+            /includes - folder with base style project
 
-            /index.css - общий файл, который включает в себя все стили
+            /index.css - file that includes all settings and styles
