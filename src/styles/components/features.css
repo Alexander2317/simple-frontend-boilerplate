@@ -1,0 +1,21 @@
+.features {
+  padding: var(--offset20);
+
+  @mixin widthContent;
+
+  &__text {
+    font-size: var(--size24);
+    font-weight: bold;
+  }
+}
+
+.feature {
+  font-size: var(--size16);
+  color: var(--black);
+  margin-bottom: var(--offset5);
+  list-style: circle;
+}
+
+.hide {
+  display: none;
+}

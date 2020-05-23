@@ -1,0 +1,39 @@
+{
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module"
+    },
+    "extends": [
+        "eslint:recommended",
+        "prettier"
+    ],
+    "plugins": ["babel", "prettier"],
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "rules": {
+        "no-console": ["error", {"allow": ["warn", "error", "info"]}],
+        "prefer-destructuring": [
+          "error",
+          {
+            "VariableDeclarator": {
+             "array": false,
+             "object": true
+            },
+            "AssignmentExpression": {
+              "array": false,
+              "object": false
+            }
+          },
+          {
+            "enforceForRenamedProperties": false
+          }
+        ],
+        "no-unused-vars": ["error", { "args": "none" }],
+        "prettier/prettier": "error",
+        "import/extensions": "off",
+        "import/no-unresolved": "off"
+    }
+}

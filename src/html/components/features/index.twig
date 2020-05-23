@@ -1,0 +1,21 @@
+{% set features = [
+  'twig',
+  'postcss',
+  'prettier',
+  'eslint',
+  'stylelint',
+  'babel',
+  'es6-es8',
+  'hmr',
+] %}
+
+<section class="features">
+  <button class="features__text js-features-button">Hide list</button>
+
+  <ul class="js-features">
+    {% for feature in features %}
+      {% include "feature.twig" with { text: feature } %}
+    {% endfor %}
+  </ul>
+</section>
+

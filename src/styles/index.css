@@ -1,0 +1,8 @@
+@import './includes/normalize.css';
+@import './includes/_variables.css';
+@import './includes/_footer_to_the_bottom.css';
+@import './includes/_mixin.css';
+@import './includes/_base.css';
+@import './components/header.css';
+@import './components/footer.css';
+@import './components/features.css';

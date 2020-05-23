@@ -1,0 +1,10 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--offset5) 0;
+  background: var(--pink);
+  font-size: var(--size24);
+  color: var(--white);
+  text-align: center;
+}

@@ -1,0 +1,8 @@
+@custom-media --tablet (max-width: 875px);
+@custom-media --mobile (max-width: 650px);
+
+@define-mixin widthContent {
+  max-width: 1200px;
+  width: 95%;
+  margin: 0 auto;
+}

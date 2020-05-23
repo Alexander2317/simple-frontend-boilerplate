@@ -1,0 +1,18 @@
+:root {
+  --font: 'Tahoma', arial, sans-serif;
+  --white: #fff;
+  --black: #000;
+  --pink: #f17b7b;
+  --blue: #b4f2ff;
+  --size14: 14px;
+  --size16: 16px;
+  --size18: 18px;
+  --size24: 24px;
+  --size34: 34px;
+  --size36: 36px;
+  --size54: 54px;
+  --offset5: 5px;
+  --offset10: 10px;
+  --offset15: 15px;
+  --offset20: 20px;
+}

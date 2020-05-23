@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Simple frontend boilerplate{% endblock %}</title>
+  <meta name="viewport" content="initial-scale=1, minimum-scale=1, width=device-width">
+
+  {% block meta %}
+    <meta name="description" content="Some description">
+    <meta name="keywords" content="some keywords">
+  {% endblock %}
+
+
+  {% include "_head.twig" %}
+  {% include "_favicon.twig" %}
+
+  {% block head %}
+  {% endblock %}
+</head>
+
+<body>
+<section class="wrapper">
+  <div class="content">
+    {% include "_header.twig" %}
+    <main class="main">
+      {% block content %}
+      {% endblock %}
+    </main>
+  </div>
+  {% include "_footer.twig" %}
+</section>
+
+{% block scripts %}
+{% endblock %}
+</body>
+</html>
