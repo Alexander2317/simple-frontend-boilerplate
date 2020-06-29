@@ -44,7 +44,7 @@ Main libraries
 Structure folders
  -----------------------------------
 
-For layout use [Twig](https://dev-gang.ru/doc/twig/) template engine
+For layout used [Twig](https://dev-gang.ru/doc/twig/) template engine
 
     src
         /html - templates
