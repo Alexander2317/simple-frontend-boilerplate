@@ -30,7 +30,7 @@ const JS_FOLDER = `${BASE_FOLDER}/js`;
 
 const IMAGES_FOLDER = '/images';
 
-const FONTS_FOLDER = '/fonts';
+// const FONTS_FOLDER = '/fonts';
 
 const BUILD_FOLDER = 'build';
 
@@ -66,16 +66,19 @@ const getPlugins = (isDev) =>
     new MiniCssExtractPlugin({
       filename: isDev ? '[name].css' : '[name].[chunkhash:8].css',
     }),
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, `${BASE_FOLDER}${IMAGES_FOLDER}`),
-        to: `.${IMAGES_FOLDER}`,
-      },
-      {
-        from: path.resolve(__dirname, `${BASE_FOLDER}${FONTS_FOLDER}`),
-        to: `.${FONTS_FOLDER}`,
-      },
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, `${BASE_FOLDER}${IMAGES_FOLDER}`),
+          to: `.${IMAGES_FOLDER}`,
+        },
+        // if you need fonts add them in src/fonts
+        // {
+        //   from: path.resolve(__dirname, `${BASE_FOLDER}${FONTS_FOLDER}`),
+        //   to: `.${FONTS_FOLDER}`,
+        // },
+      ],
+    }),
     isDev && new webpack.HotModuleReplacementPlugin(),
     !isDev &&
       new CleanWebpackPlugin({
