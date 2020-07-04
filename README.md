@@ -47,14 +47,14 @@ Structure folders
 For layout is used [Twig](https://dev-gang.ru/doc/twig/) template engine
 
     src
-        /html - templates
-            /components - main component project
+        /html - all templates
+            /components - main components in a project
             /layout - base layout
             /pages - pages site
 
         /images - folder with images
 
-        /js - folder with you scripts
+        /js - folder with scripts
          /app.js - main file for build
 
         /styles - folder with styles
