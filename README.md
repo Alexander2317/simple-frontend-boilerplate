@@ -1,4 +1,4 @@
-# Just simple boilerplate
+# Simple Frontend Boilerplate
 
 Settings for launch
 -----------------------------------
