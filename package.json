@@ -1,7 +1,7 @@
 {
   "name": "simple-frontend-boilerplate",
   "version": "0.0.1",
-  "description": "Simple boilerplate",
+  "description": "Simple boilerplate for js project",
   "keywords": [
     "frontend boilerplate",
     "simple boilerplate",
@@ -13,6 +13,14 @@
   "main": "index.js",
   "author": "Alexander2317",
   "license": "ISC",
+  "homepage": "https://github.com/Alexander2317/simple-frontend-boilerplate#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alexander2317/simple-frontend-boilerplate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Alexander2317/simple-frontend-boilerplate/issues"
+  },
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
