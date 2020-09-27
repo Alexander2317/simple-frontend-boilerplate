@@ -6,7 +6,8 @@ Settings for launch
 1. Install package manager [yarn](https://yarnpkg.com/).
 ```npm install -g yarn```
 2. Run the command in the console ```yarn install```
-3. Run the project [in browser](http://localhost:3000)
+3. Run the command in the console ```yarn start```
+3. Open the project [in browser](http://localhost:3000)
 
 
 Main command
