@@ -130,8 +130,9 @@ const getRules = (isDev) => [
       {
         loader: 'postcss-loader',
         options: {
-          config: {
-            path: path.resolve(__dirname, 'postcss.config.js'),
+          postcssOptions: {
+            config: path.resolve(__dirname, 'postcss.config.js'),
+            sourceMap: isDev,
           },
           sourceMap: isDev,
         },

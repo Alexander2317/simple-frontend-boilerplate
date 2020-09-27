@@ -11,7 +11,6 @@ module.exports = () => ({
     require('postcss-nested')(),
     require('postcss-color-function')(),
     require('pleeease-filters')(),
-    require('pixrem')(),
     require('postcss-selector-matches')(),
     require('postcss-selector-not')(),
     require('postcss-flexbugs-fixes')(),
