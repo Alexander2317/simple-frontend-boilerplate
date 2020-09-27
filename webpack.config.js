@@ -1,48 +1,48 @@
-const fs = require('fs');
-const path = require('path');
-const webpack = require('webpack');
-const chokidar = require('chokidar');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const fs = require('fs')
+const path = require('path')
+const webpack = require('webpack')
+const chokidar = require('chokidar')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
-const MODE_DEVELOPMENT = 'development';
-const MODE_PRODUCTION = 'production';
+const MODE_DEVELOPMENT = 'development'
+const MODE_PRODUCTION = 'production'
 
 const REG_EXP = {
   twig: /\.twig$/,
   js: /\.js/,
   css: /\.(p?css)$/,
   files: /\.(png|jpe?g|gif|svg|woff(2)?|ttf|eot)$/,
-};
+}
 
-const BASE_FOLDER = 'src';
+const BASE_FOLDER = 'src'
 
-const HTML_FOLDER = `${BASE_FOLDER}/html`;
-const COMPONENTS_FOLDER = `${HTML_FOLDER}/components`;
-const LAYOUT_FOLDER = `${HTML_FOLDER}/layout`;
-const PAGES_FOLDER = `${HTML_FOLDER}/pages`;
+const HTML_FOLDER = `${BASE_FOLDER}/html`
+const COMPONENTS_FOLDER = `${HTML_FOLDER}/components`
+const LAYOUT_FOLDER = `${HTML_FOLDER}/layout`
+const PAGES_FOLDER = `${HTML_FOLDER}/pages`
 
-const JS_FOLDER = `${BASE_FOLDER}/js`;
+const JS_FOLDER = `${BASE_FOLDER}/js`
 
-const IMAGES_FOLDER = '/images';
+const IMAGES_FOLDER = '/images'
 
 // const FONTS_FOLDER = '/fonts';
 
-const BUILD_FOLDER = 'build';
+const BUILD_FOLDER = 'build'
 
-const NAME_MAIN_JS_FILE = 'app.js';
+const NAME_MAIN_JS_FILE = 'app.js'
 
-const isDevelopment = process.env.NODE_ENV !== MODE_PRODUCTION;
-const port = process.env.PORT || 3000;
+const isDevelopment = process.env.NODE_ENV !== MODE_PRODUCTION
+const port = process.env.PORT || 3000
 
 function generateHtmlPlugins({ templateDir, isDev }) {
-  const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir));
+  const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir))
   return templateFiles.map((item) => {
-    const [name, extension] = item.split('.');
+    const [name, extension] = item.split('.')
     return new HtmlWebpackPlugin({
       filename: `${name}.html`,
       template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
@@ -52,14 +52,14 @@ function generateHtmlPlugins({ templateDir, isDev }) {
         caseSensitive: true,
         removeComments: true,
       },
-    });
-  });
+    })
+  })
 }
 
 const htmlTemplates = generateHtmlPlugins({
   templateDir: PAGES_FOLDER,
   isDevelopment,
-});
+})
 
 const getPlugins = (isDev) =>
   [
@@ -86,7 +86,7 @@ const getPlugins = (isDev) =>
       }),
   ]
     .concat(htmlTemplates)
-    .filter((plugin) => plugin);
+    .filter((plugin) => plugin)
 
 const getRules = (isDev) => [
   {
@@ -173,7 +173,7 @@ const getRules = (isDev) => [
       },
     ],
   },
-];
+]
 
 const getOptimization = () => ({
   splitChunks: {
@@ -217,7 +217,7 @@ const getOptimization = () => ({
       },
     }),
   ],
-});
+})
 
 module.exports = {
   entry: {
@@ -237,8 +237,8 @@ module.exports = {
       chokidar
         .watch([path.resolve(__dirname, `${HTML_FOLDER}/**/*.twig`)])
         .on('all', function () {
-          server.sockWrite(server.sockets, 'content-changed');
-        });
+          server.sockWrite(server.sockets, 'content-changed')
+        })
     },
   },
   module: {
@@ -246,4 +246,4 @@ module.exports = {
   },
   plugins: getPlugins(isDevelopment),
   optimization: getOptimization(),
-};
+}

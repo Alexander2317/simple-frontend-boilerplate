@@ -1,5 +1,5 @@
-import hideList from './hide-list';
+import hideList from './hide-list'
 
-import '../styles/index.css';
+import '../styles/index.css'
 
-hideList();
+hideList()

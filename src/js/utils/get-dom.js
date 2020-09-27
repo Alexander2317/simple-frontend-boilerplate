@@ -1,8 +1,8 @@
-const MAX_LENGTH = 1;
+const MAX_LENGTH = 1
 
 const getDOM = (name) =>
   document.querySelectorAll(name).length > MAX_LENGTH
     ? document.querySelectorAll(name)
-    : document.querySelector(name);
+    : document.querySelector(name)
 
-export default getDOM;
+export default getDOM

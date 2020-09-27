@@ -2,7 +2,14 @@
   "name": "simple-frontend-boilerplate",
   "version": "0.0.1",
   "description": "Simple boilerplate",
-  "keywords": ["frontend boilerplate", "simple boilerplate", "twig boilerplate", "postcss boilerplate", "webpack 4 boilerplate", "простой бойлерплейт"],
+  "keywords": [
+    "frontend boilerplate",
+    "simple boilerplate",
+    "twig boilerplate",
+    "postcss boilerplate",
+    "webpack 4 boilerplate",
+    "простой бойлерплейт"
+  ],
   "main": "index.js",
   "author": "Alexander2317",
   "license": "ISC",
@@ -11,6 +18,7 @@
     "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/plugin-proposal-export-namespace-from": "^7.10.4",
     "@babel/plugin-proposal-object-rest-spread": "^7.10.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.11.0",
     "@babel/plugin-proposal-throw-expressions": "^7.10.4",
     "@babel/plugin-syntax-class-properties": "^7.10.4",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",

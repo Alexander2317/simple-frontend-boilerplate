@@ -1,5 +1,5 @@
 module.exports = (api) => {
-  api.cache(true);
+  api.cache(true)
 
   return {
     presets: [
@@ -12,6 +12,7 @@ module.exports = (api) => {
       ],
     ],
     plugins: [
+      '@babel/plugin-proposal-optional-chaining',
       '@babel/plugin-proposal-object-rest-spread',
       '@babel/plugin-transform-async-to-generator',
       '@babel/plugin-syntax-dynamic-import',
@@ -20,5 +21,5 @@ module.exports = (api) => {
       '@babel/plugin-syntax-class-properties',
       ['@babel/plugin-proposal-class-properties', { loose: true }],
     ],
-  };
-};
+  }
+}
