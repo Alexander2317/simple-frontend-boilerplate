@@ -46,7 +46,7 @@ function generateHtmlPlugins({ templateDir, isDev }) {
     return new HtmlWebpackPlugin({
       filename: `${name}.html`,
       template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
-      minify: isDev && {
+      minify: !isDev && {
         html5: true,
         collapseWhitespace: true,
         caseSensitive: true,
