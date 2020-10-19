@@ -123,6 +123,7 @@ const getRules = (isDev) => [
       {
         loader: 'css-loader',
         options: {
+          url: false,
           sourceMap: isDev,
           importLoaders: 1,
         },
