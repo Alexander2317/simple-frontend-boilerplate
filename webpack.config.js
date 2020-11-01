@@ -5,7 +5,7 @@ const chokidar = require('chokidar')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
@@ -17,6 +17,7 @@ const REG_EXP = {
   js: /\.js/,
   css: /\.(p?css)$/,
   files: /\.(png|jpe?g|gif|svg|woff(2)?|ttf|eot)$/,
+  modules: /node_modules/,
 }
 
 const BASE_FOLDER = 'src'
@@ -64,7 +65,8 @@ const htmlTemplates = generateHtmlPlugins({
 const getPlugins = (isDev) =>
   [
     new MiniCssExtractPlugin({
-      filename: isDev ? '[name].css' : '[name].[chunkhash:8].css',
+      filename: isDev ? '[name].css' : '[name].[contenthash].css',
+      chunkFilename: isDev ? '[id].css' : '[id].[contenthash].css',
     }),
     new CopyWebpackPlugin({
       patterns: [
@@ -107,19 +109,13 @@ const getRules = (isDev) => [
   },
   {
     test: REG_EXP.js,
-    exclude: /node_modules/,
+    exclude: REG_EXP.modules,
     use: ['cache-loader', 'babel-loader?cacheDirectory', 'thread-loader'],
   },
   {
     test: REG_EXP.css,
     use: [
-      {
-        loader: MiniCssExtractPlugin.loader,
-        options: {
-          hmr: isDev,
-          reloadAll: true,
-        },
-      },
+      MiniCssExtractPlugin.loader,
       {
         loader: 'css-loader',
         options: {
@@ -177,48 +173,31 @@ const getRules = (isDev) => [
   },
 ]
 
-const getOptimization = () => ({
-  splitChunks: {
-    cacheGroups: {
-      styles: {
-        test: REG_EXP.css,
-        name: 'styles',
-        chunks: 'all',
-        enforce: true,
-      },
-    },
-  },
-  minimizer: [
-    new OptimizeCssAssetsPlugin({
-      assetNameRegExp: REG_EXP.css,
-      cssProcessor: require('cssnano'),
-      cssProcessorPluginOptions: {
-        preset: [
-          'default',
-          {
-            discardComments: { removeAll: true },
+const getOptimization = (isDev) => ({
+  minimize: !isDev,
+  minimizer: isDev
+    ? []
+    : [
+        new CssMinimizerPlugin({
+          test: REG_EXP.css,
+        }),
+        new TerserPlugin({
+          cache: true,
+          parallel: true,
+          terserOptions: {
+            compress: {
+              dead_code: true,
+              conditionals: true,
+              booleans: true,
+            },
+            module: false,
+            output: {
+              comments: false,
+              beautify: false,
+            },
           },
-        ],
-      },
-      canPrint: true,
-    }),
-    new TerserPlugin({
-      cache: true,
-      parallel: true,
-      terserOptions: {
-        compress: {
-          dead_code: true,
-          conditionals: true,
-          booleans: true,
-        },
-        module: false,
-        output: {
-          comments: false,
-          beautify: false,
-        },
-      },
-    }),
-  ],
+        }),
+      ],
 })
 
 module.exports = {
@@ -247,5 +226,5 @@ module.exports = {
     rules: getRules(isDevelopment),
   },
   plugins: getPlugins(isDevelopment),
-  optimization: getOptimization(),
+  optimization: getOptimization(isDevelopment),
 }
