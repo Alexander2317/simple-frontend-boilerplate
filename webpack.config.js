@@ -36,6 +36,7 @@ const IMAGES_FOLDER = '/images'
 const BUILD_FOLDER = 'build'
 
 const NAME_MAIN_JS_FILE = 'app.js'
+const BUNDLE_NAME = 'bundle.js'
 
 const isDevelopment = process.env.NODE_ENV !== MODE_PRODUCTION
 const port = process.env.PORT || 3000
@@ -206,6 +207,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, BUILD_FOLDER),
+    filename: isDevelopment ? '[name].js' : `[hash].${BUNDLE_NAME}`,
   },
   mode: isDevelopment ? MODE_DEVELOPMENT : MODE_PRODUCTION,
   devtool: isDevelopment && 'source-map',
