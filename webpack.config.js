@@ -1,7 +1,6 @@
 const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
-const chokidar = require('chokidar')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -66,8 +65,8 @@ const htmlTemplates = generateHtmlPlugins({
 const getPlugins = (isDev) =>
   [
     new MiniCssExtractPlugin({
-      filename: isDev ? '[name].css' : '[name].[contenthash].css',
-      chunkFilename: isDev ? '[id].css' : '[id].[contenthash].css',
+      filename: isDev ? '[name].css' : '[name].[fullhash].css',
+      chunkFilename: isDev ? '[id].css' : '[id].[fullhash].css',
     }),
     new CopyWebpackPlugin({
       patterns: [
@@ -182,22 +181,7 @@ const getOptimization = (isDev) => ({
         new CssMinimizerPlugin({
           test: REG_EXP.css,
         }),
-        new TerserPlugin({
-          cache: true,
-          parallel: true,
-          terserOptions: {
-            compress: {
-              dead_code: true,
-              conditionals: true,
-              booleans: true,
-            },
-            module: false,
-            output: {
-              comments: false,
-              beautify: false,
-            },
-          },
-        }),
+        new TerserPlugin({}),
       ],
 })
 
@@ -207,21 +191,15 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, BUILD_FOLDER),
-    filename: isDevelopment ? '[name].js' : `[hash].${BUNDLE_NAME}`,
+    filename: isDevelopment ? '[name].js' : `[fullhash].${BUNDLE_NAME}`,
   },
   mode: isDevelopment ? MODE_DEVELOPMENT : MODE_PRODUCTION,
   devtool: isDevelopment && 'source-map',
   devServer: {
     port,
-    open: false,
-    hot: true,
-    contentBase: path.join(__dirname, BASE_FOLDER),
-    before(app, server) {
-      chokidar
-        .watch([path.resolve(__dirname, `${HTML_FOLDER}/**/*.twig`)])
-        .on('all', function () {
-          server.sockWrite(server.sockets, 'content-changed')
-        })
+    historyApiFallback: true,
+    static: {
+      directory: path.resolve(__dirname, BASE_FOLDER),
     },
   },
   module: {
