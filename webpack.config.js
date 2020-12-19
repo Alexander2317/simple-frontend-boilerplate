@@ -181,7 +181,7 @@ const getOptimization = (isDev) => ({
         new CssMinimizerPlugin({
           test: REG_EXP.css,
         }),
-        new TerserPlugin({}),
+        new TerserPlugin(),
       ],
 })
 
