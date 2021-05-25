@@ -197,6 +197,7 @@ module.exports = {
   devtool: isDevelopment && 'source-map',
   devServer: {
     port,
+    open: true,
     historyApiFallback: true,
     static: {
       directory: path.resolve(__dirname, BASE_FOLDER),
